@@ -1,5 +1,5 @@
 # CUROCKET
-This repo contains a CUDA-based implementation of the feature-extraction algorithm ROCKET (RandOm Convolutional KErnel Transform) [[1](https://arxiv.org/abs/1910.13051)] to run ROCKET on GPU. On the test setup, it has up to 12.5 times higher computational efficiency per watt than ROCKET on CPU. CUDA-ROCKET is explained in details in this paper [[2](https://arxiv.org/)].
+This repo contains a CUDA-based implementation of the feature-extraction algorithm ROCKET (RandOm Convolutional KErnel Transform) [[1](https://arxiv.org/abs/1910.13051)] to run ROCKET on GPU. On the test setup, it has up to 11 times higher computational efficiency per watt than ROCKET on CPU. CUDA-ROCKET is explained in details in this paper [[2](https://arxiv.org/)].
 
 ## Content
 - CuRocketUnivariate: univariate version of CUDA-ROCKET

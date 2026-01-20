@@ -1,6 +1,5 @@
 import cupy as cp
 import numpy as np
-from time import time
 
 def _apply_kernels_multivariate(X, kernels, device_id = 0):
     (
@@ -113,7 +112,6 @@ def _apply_kernels_multivariate(X, kernels, device_id = 0):
                 (X_, all_kernel_data_, y_ppv_, y_max_))
             cp.cuda.get_current_stream().synchronize()
 
-            t = time()
             y_ppv[series_start_idx:series_end_idx, :] = y_ppv_.get()[:series_amount_iteration, :] / calcs_per_kernel
             y_max[series_start_idx:series_end_idx, :] = y_max_.get()[:series_amount_iteration, :]
             del X_

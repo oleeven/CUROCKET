@@ -1,6 +1,5 @@
 import cupy as cp
 import numpy as np
-from time import time
 
 def _apply_kernels_univariate(X, kernels):
     (

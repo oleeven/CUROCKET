@@ -1,6 +1,5 @@
 import cupy as cp
 import numpy as np
-from time import time
 from concurrent.futures import ThreadPoolExecutor
 from CuRocketMultivariate.curocket_multivariate import _apply_kernels_multivariate
 

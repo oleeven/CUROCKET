@@ -47,8 +47,8 @@ def _apply_kernels_multivariate(X, kernels, device_id = 0):
         def float_arr_2_int(arr): return np.frombuffer(arr.tobytes(), np.int32)
 
         whole_kernel_lengths = kernel_lengths * num_channel_indices
-        kernel_starts = np.concatenate(([0], np.cumsum(whole_kernel_lengths)), dtype=np.int32) # TODO remove operations that store to RAM
-        calcs_per_kernel = (n_timepoints + 2 * padding - dilation * (kernel_lengths-1)) # * num_channel_indices
+        kernel_starts = np.concatenate(([0], np.cumsum(whole_kernel_lengths)), dtype=np.int32)
+        calcs_per_kernel = (n_timepoints + 2 * padding - dilation * (kernel_lengths-1))
         num_channel_indices_cumsum = np.concatenate(([0], np.cumsum(num_channel_indices)), dtype=np.int32)
         y_ppv = np.empty((n_instances, n_kernels), np.float32)
         y_max = np.empty((n_instances, n_kernels), np.float32)
@@ -58,7 +58,7 @@ def _apply_kernels_multivariate(X, kernels, device_id = 0):
         for i in range(n_kernels):
             start = kernel_starts[i] 
             whole_kernel_length = whole_kernel_lengths[i]
-            all_kernel_data[i, 0:whole_kernel_length] = float_arr_2_int(kernel_weights[start:start+whole_kernel_length]) # weights
+            all_kernel_data[i, 0:whole_kernel_length] = float_arr_2_int(kernel_weights[start:start+whole_kernel_length])
             all_kernel_data[i, n_weights_per_kernel:n_weights_per_kernel+num_channel_indices[i]] = channel_indices[num_channel_indices_cumsum[i]:num_channel_indices_cumsum[i+1]]
             all_kernel_data[i, b] = kernel_lengths[i]
             all_kernel_data[i, b+1] = num_channel_indices[i]

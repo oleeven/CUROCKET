@@ -95,10 +95,6 @@ def _apply_kernels_univariate(X, kernels):
     series_end_idx = series_start_idx + n_instances_optimal
     series_amount_iteration = n_instances_optimal
 
-    # t_prep = time() - t
-
-    # t_kernel = time()
-
     for series_iteration in range(series_iterations):
         X_ = cp.array(X[series_start_idx:series_end_idx], dtype=cp.float32)
 
@@ -114,9 +110,6 @@ def _apply_kernels_univariate(X, kernels):
         series_end_idx += n_instances_optimal
         if series_end_idx > n_instances: series_end_idx = n_instances
         series_amount_iteration = series_end_idx - series_start_idx
-
-    # t_kernel = time() - t_kernel
-    # print("t_kernel", t_kernel)
 
     del all_kernel_data_, y_ppv_, y_max_, cuda_roc
     cp.get_default_memory_pool().free_all_blocks()

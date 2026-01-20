@@ -1,9 +1,3 @@
-"""Rocket transformer using CUDA."""
-
-# __author__ = ["angus924"]
-# __all__ = ["Rocket"]
-
-
 import numpy as np
 import pandas as pd
 
@@ -16,19 +10,10 @@ class CuRocketUnivariate(BaseTransformer):
     """
 
     _tags = {
-        # packaging info
-        # --------------
-        # "authors": ["angus924"],
-        # "maintainers": ["angus924"],
-        # "python_dependencies": ["numba", "cupy"],
-        # estimator type
-        # --------------
         "univariate-only": True,
         "fit_is_empty": False,
         "scitype:transform-input": "Series",
-        # what is the scitype of X: Series, or Panel
         "scitype:transform-output": "Primitives",
-        # what is the scitype of y: None (not needed), Primitives, Series, Panel
         "scitype:instancewise": False,  # is this an instance-wise transform?
         "X_inner_mtype": "numpy3D",  # which mtypes do _fit/_predict support for X?
         "y_inner_mtype": "None",  # which mtypes do _fit/_predict support for X?
@@ -59,14 +44,12 @@ class CuRocketUnivariate(BaseTransformer):
         return self
 
     def _transform(self, X, y=None):
-
         from CuRocketUnivariate.curocket_univariate import _apply_kernels_univariate
 
         if self.normalise:
             X = (X - X.mean(axis=-1, keepdims=True)) / (
                 X.std(axis=-1, keepdims=True) + 1e-8
             )
-        temp = _apply_kernels_univariate(X.astype(np.float32), self.kernels)
-        t = pd.DataFrame(temp) # original
+        t = pd.DataFrame(_apply_kernels_univariate(X.astype(np.float32), self.kernels))
 
         return t

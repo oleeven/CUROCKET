@@ -1,10 +1,10 @@
 # CUROCKET
-This repo contains a CUDA-based implementation of the feature-extraction algorithm ROCKET (RandOm Convolutional KErnel Transform) [[1](https://arxiv.org/abs/1910.13051)] to run ROCKET on GPU. On the test setup, it has up to 11 times higher computational efficiency per watt than ROCKET on CPU. CUDA-ROCKET is explained in details in this paper [[2](https://arxiv.org/)].
+This repo contains a CUDA-based implementation of the feature-extraction algorithm ROCKET (RandOm Convolutional KErnel Transform) [[1](https://arxiv.org/abs/1910.13051)] to run ROCKET on GPU. On the test setup, it has up to 11 times higher computational efficiency per watt than ROCKET on CPU. CUROCKET is explained in details in this paper [[2](https://arxiv.org/)].
 
 ## Content
-- CuRocketUnivariate: univariate version of CUDA-ROCKET
-- CuRocketMultivariate: multivariate version of CUDA-ROCKET
-- CuRocketMultivariateMultiGPU: multivariate version of CUDA-ROCKET that works on multiple GPUs in parallel. It has more overhead than single GPU, therefore it is only more efficient at a certain dataset size. Currently only mutltiple GPUs of the same type are supported
+- CuRocketUnivariate: univariate version of CUROCKET
+- CuRocketMultivariate: multivariate version of CUROCKET
+- CuRocketMultivariateMultiGPU: multivariate version of CUROCKET that works on multiple GPUs in parallel. It has more overhead than single GPU, therefore it is only more efficient at a certain dataset size. Currently only mutltiple GPUs of the same type are supported
 
 ## Setup
 The python packages sktime and cupy need to be installed. Refer to their documentation for a detailed explanation on how to install them. They can be installed via pip.
@@ -14,7 +14,7 @@ pip install cupy
 ```
 
 ## Usage
-The modules are set up in an sklearn-compatible format, so you can use functions fit and transform on an instance of CUDA-ROCKET as demonstrated in the following example.
+The modules are set up in an sklearn-compatible format, so you can use functions fit and transform on an instance of CUROCKET as demonstrated in the following example.
 
 ```python
 import numpy as np

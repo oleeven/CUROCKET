@@ -7,10 +7,12 @@ This repo contains a CUDA-based implementation of the feature-extraction algorit
 - CuRocketMultivariateMultiGPU: multivariate version of CUROCKET that works on multiple GPUs in parallel. It has more overhead than single GPU, therefore it is only more efficient at a certain dataset size. Currently only mutltiple GPUs of the same type are supported
 
 ## Setup
-The python packages sktime and cupy need to be installed. Refer to their documentation for a detailed explanation on how to install them. They can be installed via pip.
+You need a system with a CUDA-capable GPU and CUDA installed. The python packages sktime, numba and cupy need to be installed. If you want to use the notebook, install jupyter. Refer to the packages' documentation for a detailed explanation on how to install them. They can be installed via pip. Depending on your CUDA version, you have to install a different version of cupy. In the following example its for CUDA 12.x.
 ```bash
 pip install sktime
-pip install cupy
+pip install numba
+pip install cupy-cuda12x
+pip install jupyter
 ```
 
 ## Usage

@@ -36,7 +36,7 @@ void cuda_rocket(const float* X, const int* all_kernel_data, float* y_ppv, float
             }
         }
         if (sum > 0) atomicAdd_block(&PPV, 1); // add 1 too ppv counter if sum is greater than 0
-        atomicMaxFloat_block(((float*)&MAX), sum); // set new max with sum if sum if greater than current max
+        atomicMaxFloat_block(((float*)&MAX), sum); // set new max with sum if sum is greater than current max
         dot_product_idx += MAX_BLOCK_DIM_X; // increase dot product index
     }
     __syncthreads(); // wait for all calulations in the block to be done

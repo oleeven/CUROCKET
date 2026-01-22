@@ -1,0 +1,29 @@
+{
+	"name": "curocket",
+
+	"build": {
+		"dockerfile": "./Dockerfile",
+		"context": "${localWorkspaceFolder}",
+		"args": {}
+	},
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.debugpy"
+			]
+		}
+	},
+
+	"remoteUser": "root",
+    
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=bind",
+	"workspaceFolder": "/workspace",
+    
+	"runArgs": [
+        "--gpus=all",
+		"--ipc=host",
+	]
+
+}

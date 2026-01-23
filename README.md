@@ -14,7 +14,7 @@ pip install numba
 pip install cupy-cuda12x
 pip install jupyter
 ```
-
+Alternatively, you can use the devcontainer.
 ## Usage
 The modules are set up in an sklearn-compatible format, so you can use functions fit and transform on an instance of CUROCKET as demonstrated in the following example.
 
